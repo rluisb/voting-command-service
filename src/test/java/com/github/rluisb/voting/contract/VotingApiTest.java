@@ -1,4 +1,4 @@
-package com.github.rluisb.voting;
+package com.github.rluisb.voting.contract;
 
 import com.github.rluisb.voting.api.dto.VoteDto;
 import com.github.rluisb.voting.model.CommandResponse;
@@ -11,12 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static io.restassured.RestAssured.given;
 
 @RunWith(SpringRunner.class)
@@ -46,7 +44,7 @@ public class VotingApiTest {
                 .contentType(ContentType.JSON)
                 .body(buildVoteDto())
                 .when()
-                .post("/vote")
+                .post("/votes")
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(200)
@@ -60,7 +58,7 @@ public class VotingApiTest {
                 .contentType(ContentType.JSON)
                 .body(buildEmptyVoteDto())
                 .when()
-                .post("/vote")
+                .post("/votes")
                 .then()
                 .contentType(ContentType.JSON)
                 .statusCode(400);

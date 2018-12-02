@@ -13,3 +13,7 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+
+axon:
+  amqp:
+    exchange: ruling-voting.events

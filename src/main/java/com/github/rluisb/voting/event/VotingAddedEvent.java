@@ -7,6 +7,9 @@ public class VotingAddedEvent {
     private String id;
     private Vote vote;
 
+    public VotingAddedEvent() {
+    }
+
     public VotingAddedEvent(String id, Vote vote) {
         this.id = id;
         this.vote = vote;

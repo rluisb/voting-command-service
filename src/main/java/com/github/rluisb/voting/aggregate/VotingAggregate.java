@@ -20,6 +20,9 @@ public class VotingAggregate {
     private String id;
     private Vote vote;
 
+    public VotingAggregate() {
+    }
+
     @CommandHandler
     public VotingAggregate(AddVotingCommand addVotingCommand) {
         LOGGER.info(String.format("Handling %s command: %s", addVotingCommand.getClass().getSimpleName(), addVotingCommand));

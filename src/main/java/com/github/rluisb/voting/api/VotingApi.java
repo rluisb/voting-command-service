@@ -4,8 +4,10 @@ import com.github.rluisb.voting.api.dto.VoteDto;
 import com.github.rluisb.voting.command.AddVotingCommand;
 import com.github.rluisb.voting.model.CommandResponse;
 import com.github.rluisb.voting.model.Vote;
-import io.swagger.annotations.*;
-import org.apache.http.HttpException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.log4j.Logger;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.modelmapper.ModelMapper;
@@ -20,11 +22,10 @@ import javax.validation.Valid;
 import java.util.Objects;
 import java.util.UUID;
 
-import static org.springframework.http.ResponseEntity.badRequest;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@Api(tags = "Voting Api")
+@Api(tags = "Voting Command Api")
 public class VotingApi implements BaseVersion {
 
     private final Logger LOGGER = Logger.getLogger(this.getClass());
@@ -41,8 +42,8 @@ public class VotingApi implements BaseVersion {
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "Something went wrong in server. Please try again in a few minutes.";
     private static final String EXPECTATION_FAILED_MESSAGE = "Cannot send this command. Please, try again later.";
 
-    @PostMapping("/vote")
-    @ApiOperation(value = "This endpoint is destinated to find a ruling by it id.")
+    @PostMapping("/votes")
+    @ApiOperation(value = "This endpoint is the command to generate a new voting event.")
     @ApiResponses(value = {
             @ApiResponse(code = OK, message = OK_MESSAGE, response = CommandResponse.class),
             @ApiResponse(code = EXPECTATION_FAILED, message = EXPECTATION_FAILED_MESSAGE, response = CommandResponse.class),
