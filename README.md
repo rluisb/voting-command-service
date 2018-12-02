@@ -13,4 +13,8 @@ To implementing this project, was used:
 - Swagger
 - Docker
 
+### Roadmap
+- Enhance this readme.
+- Implement Axon tests.
+
 
