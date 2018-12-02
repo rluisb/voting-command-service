@@ -17,4 +17,8 @@ spring:
 axon:
   amqp:
     exchange: ruling-voting.events
+  serializer:
+    general: jackson
+    events: jackson
+    messages: jackson
 
